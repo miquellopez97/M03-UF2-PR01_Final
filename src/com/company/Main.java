@@ -39,17 +39,12 @@ public class Main {
         int victory = 0;
 
         victory+=oneVsOneDEF();
-        System.out.println(victory);
 
         victory+=oneVsOneATK();
-        System.out.println(victory);
 
         victory+=twoVsTwo();
-        System.out.println(victory);
 
         victory+=oneVsOneDEF();
-        System.out.println(victory);
-
 
         return victory >= 3;
     }
@@ -129,15 +124,15 @@ public class Main {
             }
         }else{
             if (!two){
-                playerFloor.add(turn(playersList.get(player).getDeck(), player));
+                playerFloor.add(turn(player));
             }else{
-                playerFloor.add(turn(playersList.get(player).getDeck(), player));
-                playerFloor.add(turn(playersList.get(player).getDeck(), player));
+                playerFloor.add(turn(player));
+                playerFloor.add(turn(player));
             }
         }
     }
 
-    public static Card turn(ArrayList<Card> x, int player){
+    public static Card turn(int player){
         Card election = new Card("default", "default", 0, 0, 0, "default", "default");
         String card;
         Scanner sc = new Scanner(System.in);
@@ -183,7 +178,32 @@ public class Main {
     }
 
     public static void addCardsToMainDeck(){
+        //**************************************************************************************************************************************
+        //Prime Legends
+        //**************************************************************************************************************************************
+        Card plMichael = new Card("Michael", "Jordan", 2,99, 99, "Chicago Bulls (1992)", "PLMJ");
+        mainDeck.add(plMichael);
+        Card plKobe = new Card("Kobe", "Bryant", 3,99, 99, "Los Angeles Lakers (2002)", "PLKB");
+        mainDeck.add(plKobe);
+        Card plLarry = new Card("Larry", "Bird", 3,99, 99, "Boston Celtics (1984)", "PLLB");
+        mainDeck.add(plLarry);
+        Card plAllen = new Card("Allen", "Iverson", 1,99, 99, "Philadelphia 76ers (2001)", "PLAI");
+        mainDeck.add(plAllen);
+        Card plShaquille = new Card("Shaquille", "O'Neal", 5,99, 99, "Los Angeles Lakers (2002)", "PLSO");
+        mainDeck.add(plShaquille);
+        Card plKarl = new Card("Karl", "Malone", 5,99, 99, "Utah Jazz (1989)", "PLKM");
+        mainDeck.add(plKarl);
+        Card plKareem = new Card("Kareem", "Abdul-Jabbar", 5,99, 99, "Los Angeles Lakers (1980)", "PLKA");
+        mainDeck.add(plKareem);
+        Card plEarvin = new Card("Earvin 'Magic'", "Johnson", 1,99, 99, "Los Angeles Lakers (1987)", "PLEJ");
+        mainDeck.add(plEarvin);
+        Card plWilt = new Card("Wilt", "Chamberlain", 5,99, 99, "Philadelphia 76ers (1961)", "PLWC");
+        mainDeck.add(plWilt);
+        Card plBill = new Card("Bill", "Russell", 5,99, 99, "Boston Celtics (1962)", "PLBR");
+        mainDeck.add(plBill);
+        //**************************************************************************************************************************************
         //Brooklyn Nets
+        //**************************************************************************************************************************************
         Card bnKyrie = new Card("Kyrie", "Irving", 1,92, 90, "Brooklyn Nets", "BNKI");
         mainDeck.add(bnKyrie);
         Card bnTyler = new Card("Tyler", "Jhnson", 1,75, 70, "Brooklyn Nets", "BNTJ");
@@ -214,8 +234,9 @@ public class Main {
         mainDeck.add(bnDeAndre);
         Card bnNicolas = new Card("Nicolas", "Claxton", 5,54, 49, "Brooklyn Nets", "BNNC");
         mainDeck.add(bnNicolas);
-
+        //**************************************************************************************************************************************
         //Miami Heat
+        //**************************************************************************************************************************************
         Card mhGoran = new Card("Goran", "Dragic", 1,75, 80, "Miami Heat", "MHGD");
         mainDeck.add(mhGoran);
         Card mhGabe = new Card("Gabe", "Vincent", 1,60, 59, "Miami Heat", "MHGV");
@@ -250,7 +271,9 @@ public class Main {
         mainDeck.add(mhUdonis);
         Card mhMeyers = new Card("Meyers", "Leonard", 5,74, 76, "Miami Heat", "MHML");
         mainDeck.add(mhMeyers);
+        //**************************************************************************************************************************************
         //Los Angeles Lakers
+        //**************************************************************************************************************************************
         Card lalLebron = new Card("LeBron", "James", 1,99, 95, "Los Angeles Lakers", "LALLJ");
         mainDeck.add(lalLebron);
         Card lalCaruso = new Card("Alex", "Caruso", 1, 70, 75, "Los angeles Lakers", "LALAC");
