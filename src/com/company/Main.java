@@ -22,6 +22,9 @@ public class Main {
         game();
     }
 
+    /**
+     * Asigna el valor de victoria
+     */
     public static void game(){
         boolean victory = false;
 
@@ -35,18 +38,32 @@ public class Main {
 
     }
 
+    /**
+     * Se produce una ronda del juego (oneVsOneDEF(), oneVsOneATK(), twoVsTwo() y oneVsOneDEF())
+     * @return
+     */
     public static boolean fight(){
         int victory = 0;
 
         victory+=oneVsOneDEF();
+        marcador(victory, 1);
 
         victory+=oneVsOneATK();
+        marcador(victory, 2);
 
         victory+=twoVsTwo();
+        marcador(victory, 3);
 
         victory+=oneVsOneDEF();
+        marcador(victory, 4);
 
         return victory >= 3;
+    }
+
+    public static void marcador(int pts, int round){
+        if (round < 3){
+            System.out.println("El marcador actual es " + pts + " : " + (round-pts));
+        }
     }
 
     public static int oneVsOneDEF(){
@@ -70,7 +87,7 @@ public class Main {
     public static int oneVsOneATK(){
         int victory=0;
 
-        System.out.println("This round you atack");
+        System.out.println("This round you attack");
         round(0,false);
         round(1,false);
         System.out.println(botFloor);
@@ -195,8 +212,8 @@ public class Main {
         mainDeck.add(plKarl);
         Card plKareem = new Card("Kareem", "Abdul-Jabbar", 5,99, 99, "Los Angeles Lakers (1980)", "PLKA");
         mainDeck.add(plKareem);
-        Card plEarvin = new Card("Earvin 'Magic'", "Johnson", 1,99, 99, "Los Angeles Lakers (1987)", "PLEJ");
-        mainDeck.add(plEarvin);
+        Card plMagic = new Card("Magic", "Johnson", 1,99, 99, "Los Angeles Lakers (1987)", "PLEJ");
+        mainDeck.add(plMagic);
         Card plWilt = new Card("Wilt", "Chamberlain", 5,99, 99, "Philadelphia 76ers (1961)", "PLWC");
         mainDeck.add(plWilt);
         Card plBill = new Card("Bill", "Russell", 5,99, 99, "Boston Celtics (1962)", "PLBR");
