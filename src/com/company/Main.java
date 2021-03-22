@@ -6,6 +6,22 @@ import Models.Player;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*Ordenar deck del jugador por posicion
+Dibujar marcador
+Dibujar campo con jugadores
+Escoger jugador mediante numero
+Menu
+    1. Cuenta
+        1.1 Cambiar nombre
+        1.2 Mostrar Album de cromos
+    2. Abrir sobres
+    3. Jugar
+        3.1 Jugar solo un cuarto
+        3.2 Jugar un partido
+    4. Creditos
+    5. Salir do{}while(opcion!=5)
+*/
+
 public class Main {
     final static String RED = "\033[31m", RESET = "\u001B[0m";
     static ArrayList<Player> playersList = new ArrayList<>();
@@ -78,8 +94,6 @@ public class Main {
 
     /**
      * Imprime el marcador actual
-     * @param pts int, puntos del usuario
-     * @param round, ronda actual
      */
     public static void scoreboard(){
         System.out.println("El marcador actual es " + scoreboard[0] + " : " + scoreboard[1]);
@@ -232,25 +246,22 @@ public class Main {
     /**
      * Distribuye 5 cartas a cada jugador
      * @param x Jugador al que asignar las cartas
-     * @param y Cartas a repartir
      */
     public static void dealCards( int x){
         boolean position = false;
-        int number = (int)(Math.random()*mainDeck.size());
+        //int number = (int)(Math.random()*mainDeck.size());
+        int number = 4;
 
         playersList.get(x).addCardToDeck(mainDeck.get(number));
         mainDeck.remove(number);
         do {
             number = (int)(Math.random()*mainDeck.size());
-            for (int i = 0; i < playersList.get(x).getDeck().size(); i++) {
+
+            playersList.get(x).addCardToDeck(mainDeck.get(number));
+            for (int i = 0; i < playersList.get(x).getDeck().size()-1; i++) {
                 if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
-                    position=true;
-                    break;
+                    playersList.get(x).getDeck().remove(i);
                 }
-            }
-            if (!position){
-                playersList.get(x).addCardToDeck(mainDeck.get(number));
-                mainDeck.remove(number);
             }
         }while (playersList.get(x).getDeck().size()<5);
     }
