@@ -3,7 +3,6 @@ package com.company;
 import Models.Card;
 import Models.Player;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,80 +12,108 @@ public class Main {
     static ArrayList<Card> mainDeck = new ArrayList<>();
     static ArrayList<Card> botFloor = new ArrayList<>();
     static ArrayList<Card> playerFloor = new ArrayList<>();
+    static int scoreboard [] = new int[2];
 
     public static void main(String[] args) {
 	    addPlayer();
         addCardsToMainDeck();
         dealCards(0);
         dealCards(1);
-        game();
+        match();
     }
 
     /**
-     * Asigna el valor de victoria
+     * Hace la 4 veces la acción singleQuarter()
      */
-    public static void game(){
+    public static void match(){
+        singleQuarter();
+        singleQuarter();
+        singleQuarter();
+        singleQuarter();
+    }
+
+    /**
+     * Hace la acción de un quarto y anuncia el ganador
+     */
+    public static void singleQuarter(){
         boolean victory = false;
 
-        victory = fight();
+        victory = quarter();
 
         if (victory){
-            System.out.println("You win game");
+            System.out.println("You win quarter");
         }else {
-            System.out.println("You lose game");
+            System.out.println("You lose quarter");
         }
-
+        System.out.print("This quarter end " + scoreboard[0] + " : " + scoreboard[1]);
     }
 
     /**
      * Se produce una ronda del juego (oneVsOneDEF(), oneVsOneATK(), twoVsTwo() y oneVsOneDEF())
-     * @return
+     * @return int, 1 o 0 dependiendo si ha ganado
      */
-    public static boolean fight(){
-        int victory = 0;
+    public static boolean quarter(){
 
-        victory+=oneVsOneDEF();
-        marcador(victory, 1);
+        oneVsOneDEF();
+        scoreboard();
+        dealCards(0);
+        dealCards(1);
 
-        victory+=oneVsOneATK();
-        marcador(victory, 2);
+        oneVsOneATK();
+        scoreboard();
+        dealCards(0);
+        dealCards(1);
 
-        victory+=twoVsTwo();
-        marcador(victory, 3);
+        twoVsTwo();
+        scoreboard();
+        dealCards(0);
+        dealCards(1);
 
-        victory+=oneVsOneDEF();
-        marcador(victory, 4);
+        oneVsOneDEF();
+        dealCards(0);
+        dealCards(1);
 
-        return victory >= 3;
+        return scoreboard[0]>scoreboard[1];
     }
 
-    public static void marcador(int pts, int round){
-        if (round < 3){
-            System.out.println("El marcador actual es " + pts + " : " + (round-pts));
-        }
+    /**
+     * Imprime el marcador actual
+     * @param pts int, puntos del usuario
+     * @param round, ronda actual
+     */
+    public static void scoreboard(){
+        System.out.println("El marcador actual es " + scoreboard[0] + " : " + scoreboard[1]);
     }
 
-    public static int oneVsOneDEF(){
-        int victory=0;
-
+    /**
+     * Compara el atributo def de la carta del usuario vs el atributo atk del bot
+     * Asigna valor al marcador
+     * @return Si el jugador ha ganado o ha perdido
+     */
+    public static void oneVsOneDEF(){
         System.out.println("This round you def");
         round(0,false);
         round(1,false);
         System.out.println(botFloor);
         System.out.println(playerFloor);
         if (playerFloor.get(0).getDef()>=botFloor.get(0).getAtk()){
+            scoreboard[0]+=playerFloor.get(0).getDef();
+            scoreboard[1]+=botFloor.get(0).getAtk();
             System.out.println("Has ganado esta ronda");
-            victory++;
         }else {
             System.out.println("Has perdido esta ronda");
+            scoreboard[0]+=playerFloor.get(0).getDef();
+            scoreboard[1]+=botFloor.get(0).getAtk();
         }
         clearArray();
-        return victory;
     }
 
-    public static int oneVsOneATK(){
-        int victory=0;
-
+    /**
+     * Compara el atributo atk de la carta del usuario vs el atributo def del bot
+     * Asigna valor al marcador
+     * @return Si el jugador ha ganado o ha perdido
+     */
+    public static void oneVsOneATK(){
         System.out.println("This round you attack");
         round(0,false);
         round(1,false);
@@ -94,38 +121,53 @@ public class Main {
         System.out.println(playerFloor);
         if (playerFloor.get(0).getAtk()>=botFloor.get(0).getDef()){
             System.out.println("Has ganado esta ronda");
-            victory++;
+            scoreboard[0]+=playerFloor.get(0).getAtk();
+            scoreboard[1]+=botFloor.get(0).getDef();
         }else {
             System.out.println("Has perdido esta ronda");
+            scoreboard[0]+=playerFloor.get(0).getAtk();
+            scoreboard[1]+=botFloor.get(0).getDef();
         }
         clearArray();
-        return victory;
     }
 
-    public static int twoVsTwo(){
-        int victory=0;
-
+    /**
+     * Compara el atributo ovr de la carta del usuario vs el atributo ovr del bot
+     * Asigna valor al marcador
+     * @return Si el jugador ha ganado o ha perdido
+     */
+    public static void twoVsTwo(){
         System.out.println("This round you play 2 vs 2");
         round(0,true);
         round(1,true);
         System.out.println(botFloor);
         System.out.println(playerFloor);
 
-        if ((playerFloor.get(0).getOvr()+playerFloor.get(1).getOvr())>=(botFloor.get(0).getDef()+botFloor.get(1).getDef())){
+        if ((playerFloor.get(0).getOvr()+playerFloor.get(1).getOvr())>=(botFloor.get(0).getOvr()+botFloor.get(1).getOvr())){
+            scoreboard[0]+=playerFloor.get(0).getOvr()+playerFloor.get(1).getOvr();
+            scoreboard[1]+=botFloor.get(0).getOvr()+botFloor.get(1).getOvr();
             System.out.println("Has ganado esta ronda");
-            victory+=2;
         }else {
+            scoreboard[0]+=botFloor.get(0).getOvr()+botFloor.get(1).getOvr();
+            scoreboard[1]+=botFloor.get(0).getOvr()+botFloor.get(1).getOvr();
             System.out.println("Has perdido esta ronda");
         }
         clearArray();
-        return victory;
     }
 
+    /**
+     * Limpia la Array de cartas de cada jugador
+     */
     public static void clearArray(){
         playerFloor.clear();
         botFloor.clear();
     }
 
+    /**
+     * Añade la carta elegida por el jugador y la añade a la array para ese turno
+     * @param player Jugador que hace la acción
+     * @param two Si es true es ronda es 2 vs 2 si no 1 vs 1
+     */
     public static void round(int player, boolean two){
         if (player == 0){
             int number = (int)(Math.random()*playersList.get(player).getDeck().size());
@@ -149,15 +191,23 @@ public class Main {
         }
     }
 
+    /**
+     * Elección de la carta y comprueba si la tienes en el deck
+     * @param player Player que hace la acción
+     * @return Retorna la carta si la tienes en el deck
+     */
     public static Card turn(int player){
         Card election = new Card("default", "default", 0, 0, 0, "default", "default");
         String card;
         Scanner sc = new Scanner(System.in);
         boolean correctElection=false;
 
+        System.out.println("*****************************************************************");
         for (Card c:playersList.get(player).getDeck()) {
             System.out.println(c);
         }
+        System.out.println("*****************************************************************");
+
         do {
             System.out.print("Choose a card: ");
             card = sc.nextLine();
@@ -179,14 +229,92 @@ public class Main {
         return election;
     }
 
-    public static void dealCards( int x ){
-        for (int i = 0; i < 5; i++) {
-            int number = (int)(Math.random()*mainDeck.size());
-            playersList.get(x).addCardToDeck(mainDeck.get(number));
-            mainDeck.remove(number);
-        }
+    /**
+     * Distribuye 5 cartas a cada jugador
+     * @param x Jugador al que asignar las cartas
+     * @param y Cartas a repartir
+     */
+    public static void dealCards( int x){
+        boolean position = false;
+        int number = (int)(Math.random()*mainDeck.size());
+
+        playersList.get(x).addCardToDeck(mainDeck.get(number));
+        mainDeck.remove(number);
+        do {
+            number = (int)(Math.random()*mainDeck.size());
+            for (int i = 0; i < playersList.get(x).getDeck().size(); i++) {
+                if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
+                    position=true;
+                    break;
+                }
+            }
+            if (!position){
+                playersList.get(x).addCardToDeck(mainDeck.get(number));
+                mainDeck.remove(number);
+            }
+        }while (playersList.get(x).getDeck().size()<5);
     }
 
+    /**
+     * Control de errores, solo String
+     * @param input, pregunta al usuario
+     * @return String, con control de errores
+     */
+    public static String onlyString(String input){
+        Scanner sc = new Scanner(System.in);
+        String x;
+        boolean valorCorrecte=false;
+
+        do {
+            System.out.print(input);
+            x=sc.nextLine();
+
+            try {
+                Integer.parseInt(x);
+                System.out.println(RED + "Nomes pots escriure lletres." + RESET);
+            } catch (NumberFormatException excepcion) {
+                valorCorrecte=true;
+            }
+        }while(!valorCorrecte);
+
+        return  x;
+    }
+
+    /**
+     * Control de errores, leer un int con un rango
+     * @param input Prgeunta al usuario
+     * @param valorMin Valor mínimo del rango
+     * @param valorMax Valor máximo del rango
+     * @return Valor de la pregunta al usuario
+     */
+    public static int numbersWithRange(String input, int valorMin, int valorMax){
+        Scanner sc = new Scanner(System.in);
+        int x = 0;
+        boolean valorCorrecte = false;
+
+        do{
+            System.out.print(input);
+            valorCorrecte = sc.hasNextInt();
+
+            if(!valorCorrecte){
+                System.out.println(RED+"ERROR: No has escrito un entero"+RESET);
+                sc.nextLine();
+            }else{
+                x = sc.nextInt();
+                sc.nextLine();
+
+                if (x < valorMin || x > valorMax){
+                    System.out.println(RED+"ERROR: Valor fuera del rango"+RESET);
+                    valorCorrecte = false;
+                }
+            }
+        }while(!valorCorrecte);
+        return x;
+    }
+
+    /**
+     * Añadir jugadores
+     */
     public static void addPlayer(){
         Player pc = new Player("Bot");
         playersList.add(pc);
@@ -194,6 +322,9 @@ public class Main {
         playersList.add(miquel);
     }
 
+    /**
+     * Añadir cartas al deck
+     */
     public static void addCardsToMainDeck(){
         //**************************************************************************************************************************************
         //Prime Legends

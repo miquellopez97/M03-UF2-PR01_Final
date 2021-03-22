@@ -11,6 +11,16 @@ public class Card {
     private String team;
     private String idCard;
 
+    /**
+     * Constructor de la carta
+     * @param name, nombre del jugador
+     * @param surname, apellido del jugador
+     * @param position, posicion del jugador
+     * @param atk, valor de ataque del jugador
+     * @param def, valor de defensa del jugador
+     * @param team, equipo del jugador
+     * @param idCard, id de la Carta
+     */
     public Card(String name, String surname, int position,int atk, int def, String team, String idCard) {
         this.name = name;
         this.surname = surname;
@@ -22,12 +32,20 @@ public class Card {
         this.idCard = idCard;
     }
 
+    /**
+     * Modifica el metodo toString de la clase Player
+     * @return, String que imprimir
+     */
     @Override
     public String toString() {
-        return  name + " " + surname + RED + " OVR: " + RESET + ovr + RED + " ATK: " + RESET + atk + RED + " DEF: " +
-                RESET + def + RED + " TEAM: " + RESET + team;
+        return  this.name + " " + this.surname + RED + " POS:" + RESET + this.position + RED + " OVR: " + RESET + this.ovr + RED + " ATK: " + RESET + this.atk + RED + " DEF: " +
+                RESET + this.def + RED + " TEAM: " + RESET + this.team;
     }
 
+    /**
+     * Modifica el metodo equals de la clase Player
+     * @return, booleano de la comparación
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null || obj.getClass() != this.getClass()){
@@ -38,67 +56,51 @@ public class Card {
         return this.name.equalsIgnoreCase(cardToCompare.name);
     }
 
+    /**
+     * Retorna el nombre del jugador
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Reenombra el nombre del jugador
+     * @param name, nombre del jugador
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
+    /**
+     * Devuelve la posición del jugador
+     * @return, posición del jugador
+     */
     public int getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
+    /**
+     * Devuelve la media del jugador
+     * @return, media del jugador
+     */
     public float getOvr() {
         return ovr;
     }
 
-    public void setOvr(float ovr) {
-        this.ovr = ovr;
-    }
-
+    /**
+     * Devuelve el valor de ataque del jugador
+     * @return, valor de ataque del jugador
+     */
     public int getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
+    /**
+     * Devuelve el valor de defensa del jugador
+     * @return, valor de defensa del jugador
+     */
     public int getDef() {
         return def;
-    }
-
-    public void setDef(int def) {
-        this.def = def;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
     }
 }
