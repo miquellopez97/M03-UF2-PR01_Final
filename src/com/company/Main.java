@@ -6,7 +6,9 @@ import Models.Player;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*Ordenar deck del jugador por posicion
+/*
+Una funcion para cuando solo sumas una carta
+Ordenar deck del jugador por posicion
 Dibujar marcador
 Dibujar campo con jugadores
 Escoger jugador mediante numero
@@ -249,8 +251,7 @@ public class Main {
      */
     public static void dealCards( int x){
         boolean position = false;
-        //int number = (int)(Math.random()*mainDeck.size());
-        int number = 4;
+        int number = (int)(Math.random()*mainDeck.size());
 
         playersList.get(x).addCardToDeck(mainDeck.get(number));
         mainDeck.remove(number);
