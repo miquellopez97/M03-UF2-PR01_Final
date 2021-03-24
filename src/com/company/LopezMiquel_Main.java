@@ -170,6 +170,7 @@ public class LopezMiquel_Main {
         dealOneCard(1);
 
         oneVsOneDEF();
+        scoreboard();
         dealOneCard(0);
         dealOneCard(1);
 
@@ -346,8 +347,10 @@ public class LopezMiquel_Main {
             number = (int)(Math.random()*mainDeck.size());
 
             playersList.get(x).addCardToDeck(mainDeck.get(number));
+            mainDeck.remove(number);
             for (int i = 0; i < playersList.get(x).getDeck().size()-1; i++) {
                 if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
+                    mainDeck.add(playersList.get(x).getDeck().get(i));
                     playersList.get(x).getDeck().remove(i);
                 }
             }
