@@ -2,16 +2,16 @@ package Models;
 
 import java.util.ArrayList;
 
-public class Player {
+public class LopezMiquel_Player {
     String nickname;
-    String password;
-    ArrayList<Card> deck = new ArrayList<>();
+    ArrayList<LopezMiquel_Card> stickerAlbum = new ArrayList<>();
+    ArrayList<LopezMiquel_Card> deck = new ArrayList<>();
 
-    public void addCardToDeck( Card x){
+    public void addCardToDeck( LopezMiquel_Card x){
         this.deck.add(x);
     }
 
-    public Player(String nickname) {
+    public LopezMiquel_Player(String nickname) {
         this.nickname = nickname;
     }
 
@@ -23,12 +23,12 @@ public class Player {
         this.nickname = nickname;
     }
 
-    public ArrayList<Card> getDeck() {
+    public ArrayList<LopezMiquel_Card> getDeck() {
         return deck;
     }
 
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
+    public ArrayList<LopezMiquel_Card> getStickerAlbum() {
+        return stickerAlbum;
     }
 
     @Override
