@@ -72,15 +72,14 @@ public class LopezMiquel_Main {
     public static void addPlayerManual(){
         Scanner sc = new Scanner(System.in);
         String name, surname, team;
-        int position, atk, def, number;
-        number = (int)(Math.random());
+        int position, atk, def;
 
         name = onlyString("Nombre: ");
         surname = onlyString("Apellido: ");
         position = numbersWithRange("Posición: ", 1, 5);
         atk = numbersWithRange("Ataque: ", 50, 99);
         def = numbersWithRange("Defensa: ", 50, 99);
-        System.out.println("Equipo: ");
+        System.out.print("Equipo: ");
         team= sc.nextLine();
 
         LopezMiquel_Card newPlayer = new LopezMiquel_Card(name, surname, position,atk, def, team);
@@ -91,7 +90,7 @@ public class LopezMiquel_Main {
      * Abrir un sobre
      */
     public static void openPacket(){
-        int number = (int)(Math.random()*mainDeck.size());
+        int number;
         for (int i = 0; i < 5; i++) {
             number = (int)(Math.random()*mainDeck.size());
             playersList.get(1).getStickerAlbum().add(mainDeck.get(number));
@@ -137,7 +136,7 @@ public class LopezMiquel_Main {
      * Hace la acción de un quarto y anuncia el ganador
      */
     public static void singleQuarter(){
-        boolean victory = false;
+        boolean victory;
 
         victory = quarter();
 
@@ -184,7 +183,7 @@ public class LopezMiquel_Main {
         System.out.println("*********************************\n" +
                            "                                 \n"+
                            "      " + playersList.get(1).getNickname() + "         " + playersList.get(0).getNickname() + "      \n"+
-                           "        " + scoreboard[1] + "              " + scoreboard[0] + "       \n"+
+                           "        " + scoreboard[1] + "             " + scoreboard[0] + "       \n"+
                            "                                 \n"+
                            "*********************************\n");
     }
@@ -339,6 +338,7 @@ public class LopezMiquel_Main {
      */
     public static void dealCards(int x){
         int number = (int)(Math.random()*mainDeck.size());
+        boolean flag=false;
         clearArray();
 
         playersList.get(x).addCardToDeck(mainDeck.get(number));
@@ -347,12 +347,15 @@ public class LopezMiquel_Main {
             number = (int)(Math.random()*mainDeck.size());
 
             playersList.get(x).addCardToDeck(mainDeck.get(number));
-            mainDeck.remove(number);
             for (int i = 0; i < playersList.get(x).getDeck().size()-1; i++) {
                 if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
-                    mainDeck.add(playersList.get(x).getDeck().get(i));
                     playersList.get(x).getDeck().remove(i);
+                    flag=true;
+                    break;
                 }
+            }
+            if (!flag){
+                mainDeck.remove(number);
             }
         }while (playersList.get(x).getDeck().size()<5);
     }
@@ -362,6 +365,7 @@ public class LopezMiquel_Main {
      * @param x jugador al que repartir
      */
     public static void dealOneCard(int x){
+        boolean flag=false;
         do {
             int number = (int)(Math.random()*mainDeck.size());
 
@@ -369,7 +373,12 @@ public class LopezMiquel_Main {
             for (int i = 0; i < playersList.get(x).getDeck().size()-1; i++) {
                 if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
                     playersList.get(x).getDeck().remove(i);
+                    flag=true;
+                    break;
                 }
+            }
+            if (!flag){
+                mainDeck.remove(number);
             }
         }while (playersList.get(x).getDeck().size()<5);
     }
@@ -384,13 +393,13 @@ public class LopezMiquel_Main {
     public static int numbersWithRange(String input, int valorMin, int valorMax){
         Scanner sc = new Scanner(System.in);
         int x = 0;
-        boolean valorCorrecte = false;
+        boolean correctValue;
 
         do{
             System.out.print(input);
-            valorCorrecte = sc.hasNextInt();
+            correctValue = sc.hasNextInt();
 
-            if(!valorCorrecte){
+            if(!correctValue){
                 System.out.println(RED+"ERROR: No has escrito un numero"+RESET);
                 sc.nextLine();
             }else{
@@ -399,10 +408,10 @@ public class LopezMiquel_Main {
 
                 if (x < valorMin || x > valorMax){
                     System.out.println(RED+"ERROR: El numero esta fuera del rango"+RESET);
-                    valorCorrecte = false;
+                    correctValue = false;
                 }
             }
-        }while(!valorCorrecte);
+        }while(!correctValue);
         return x;
     }
 
@@ -558,7 +567,7 @@ public class LopezMiquel_Main {
     public static String onlyString(String input){
         Scanner sc = new Scanner(System.in);
         String x;
-        boolean valorCorrecte=false;
+        boolean correctValue=false;
 
         do {
             System.out.print(input);
@@ -568,9 +577,9 @@ public class LopezMiquel_Main {
                 Integer.parseInt(x);
                 System.out.println(RED + "Nomes pots escriure lletres." + RESET);
             } catch (NumberFormatException excepcion) {
-                valorCorrecte=true;
+                correctValue=true;
             }
-        }while(!valorCorrecte);
+        }while(!correctValue);
 
         return  x;
     }
