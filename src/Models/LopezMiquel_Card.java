@@ -45,7 +45,7 @@ public class LopezMiquel_Card {
         }
         LopezMiquel_Card cardToCompare = (LopezMiquel_Card) obj;
 
-        return this.name.equalsIgnoreCase(cardToCompare.name);
+        return this.idCard.equalsIgnoreCase(cardToCompare.idCard);
     }
 
     public String getName() {

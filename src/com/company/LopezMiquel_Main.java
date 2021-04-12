@@ -18,19 +18,7 @@ public class LopezMiquel_Main {
         int option;
 
         do {
-            System.out.println("Bienvenido a LaSalleNBA");
-            System.out.println( "1.  Opciones del usuario\n"+
-                    "2.  Abrir paquete\n"+
-                    "3.  Jugar\n"+
-                    "4.  Agregar un jugador manualmente\n"+
-                    "5.  Como jugar\n"+
-                    "6.  Salir");
-            option=numbersWithRange("Escoge una opción: ", 1, 6);
-
-            mainDeck.clear();
-            clearArray();
-            addPlayer();
-            addCardsToMainDeck();
+            option=menu();
 
             switch (option) {
                 case 1:
@@ -48,18 +36,30 @@ public class LopezMiquel_Main {
                     addPlayerManual();
                     break;
                 case 5:
-                    System.out.println("Básicamente es una simulación de " +
-                            "un partido de baloncesto en modo de cartas.\n" +
-                            "Cada jugador dispones de un base, un escolta, un alero, un ala pívot y un pívot.\n" +
-                            "Hay tres tipos de turnos:\n" +
-                            "DEF\n" +
-                            "Se compara la puntuación defensiva de la carta escogida versus el ataque de la otra carta\n" +
-                            "ATK\n" +
-                            "Se compara la puntuación ofensiva de la carta escogida versus la defensa de la otra carta\n" +
-                            "2vs2\n" +
-                            "Se compara la puntuación media de la carta escogida versus la puntuación media de la carta\n\n" +
-                            "El jugador que sume el mayor numero de puntos en el numero de rondas seleccionadas\n" +
-                            "ganara.\n");
+                    System.out.println(
+                            "*********************************** HOW TO PLAY ***********************************************\n"+
+                            "Este juego trata sobre una simulación de un partido de baloncesto, es un juego de cartas donde\n" +
+                            "cada carta es un jugador de la NBA. Tendras a tu disposición 5 cartas las cuales son\n" +
+                            "base(1), un escolta(2), un alero(3), un ala-pívot(4) y un pívot(5).\n" +
+                            "Cada carta contiene 3 valores ATK, DEF y OVR. Estos valores son asignados por el creador\n" +
+                            "del juego, el OVR es la media entre el ataque y la defensa.\n"+
+                            "El modo de juego se basa en la siguiente forma, un partido de baloncesto consiste\n"+
+                            "en 4 parciales, en este juego cada parcial esta definido por 4 acciones.\n"+
+                            "Hay tres tipos de acciones:\n" +
+                            "   Acción defensiva:\n" +
+                            "   Se compara la puntuación defensiva de la carta escogida versus el ataque de la carta rival\n" +
+                            "   Acción ofensiva:\n" +
+                            "   Se compara la puntuación ofensiva de la carta escogida versus la defensa de la carta rival\n" +
+                            "   2 contra 2:\n" +
+                            "   Se compara la puntuación OVR de la carta escogida versus el OVR de la carta rival\n" +
+                            "El orden de las acciones de los periodos sera:\n" +
+                                "   Primera acción defensiva\n"+
+                                "   Segunda acción ofensiva\n"+
+                                "   Tercera acción 2 vs 2\n"+
+                                "   Cuarta acción defensiva\n"+
+                            "El jugador que sume el mayor numero de puntos durante los cuatro periodos ganara la partida.\n"+
+                            "*********************************** HOW TO PLAY ***********************************************\n"
+                    );
                     break;
                 case 6:
                     System.out.println("Has escogido salir");
@@ -69,6 +69,49 @@ public class LopezMiquel_Main {
 
     }
 
+    /**
+     * Ordena la Arraylist del jugador o posición
+     */
+    public static void orderPosition(){
+        LopezMiquel_Card aux;
+
+        for (int i = 0; i < playersList.get(1).getDeck().size(); i++) {
+            for (int j = 0; j < playersList.get(1).getDeck().size(); j++) {
+                if (playersList.get(1).getDeck().get(i).getPosition()<=playersList.get(1).getDeck().get(j).getPosition()){
+                    aux = playersList.get(1).getDeck().get(i);
+                    playersList.get(1).getDeck().set(i, playersList.get(1).getDeck().get(j));
+                    playersList.get(1).getDeck().set(j,aux);
+                }
+            }
+        }
+    }
+
+    /**
+     * Imprime el menu
+     * @return Retorna la opción del menu
+     */
+    public static int menu(){
+        int option;
+        String[] options = new String[]{"Bienvenido a LaSalleNBA", "1.  Opciones del usuario",
+                "2.  Abrir paquete", "3.  Jugar", "4.  Agregar un fantasy player manualmente",
+                "5.  Como jugar", "6.  Salir"};
+
+        for (String x:options) {
+            System.out.println(x);
+        }
+        option=numbersWithRange("Escoge una opción: ", 1, 6);
+
+        mainDeck.clear();
+        clearArray();
+        addPlayer();
+        addCardsToMainDeck();
+
+        return option;
+    }
+
+    /**
+     * Anade una carta de forma manual
+     */
     public static void addPlayerManual(){
         Scanner sc = new Scanner(System.in);
         String name, surname, team;
@@ -126,32 +169,17 @@ public class LopezMiquel_Main {
      * Hace la 4 veces la acción singleQuarter()
      */
     public static void match(){
-        singleQuarter();
-        singleQuarter();
-        singleQuarter();
-        singleQuarter();
-    }
-
-    /**
-     * Hace la acción de un quarto y anuncia el ganador
-     */
-    public static void singleQuarter(){
-        boolean victory;
-
-        victory = quarter();
-
-        if (victory){
-            System.out.println("Has ganado el cuarto");
-        }else {
-            System.out.println("Has perdido el cuarto");
-        }
+        quarter();
+        quarter();
+        quarter();
+        quarter();
     }
 
     /**
      * Se produce una ronda del juego (oneVsOneDEF(), oneVsOneATK(), twoVsTwo() y oneVsOneDEF())
      * @return int, 1 o 0 dependiendo si ha ganado
      */
-    public static boolean quarter(){
+    public static void quarter(){
 
         oneVsOneDEF();
         scoreboard();
@@ -173,7 +201,6 @@ public class LopezMiquel_Main {
         dealOneCard(0);
         dealOneCard(1);
 
-        return scoreboard[0]>scoreboard[1];
     }
 
     /**
@@ -275,14 +302,14 @@ public class LopezMiquel_Main {
         if (player == 0){
             int number = (int)(Math.random()*playersList.get(player).getDeck().size());
             if (!two){
-                botFloor.add(playersList.get(player).getDeck().get(number));
+                botFloor.add(playersList.get(0).getDeck().get(number));
                 playersList.get(player).getDeck().remove(number);
             }else{
                 botFloor.add(playersList.get(player).getDeck().get(number));
-                playersList.get(player).getDeck().remove(number);
+                playersList.get(0).getDeck().remove(number);
                 number = (int)(Math.random()*playersList.get(player).getDeck().size());
                 botFloor.add(playersList.get(player).getDeck().get(number));
-                playersList.get(player).getDeck().remove(number);
+                playersList.get(0).getDeck().remove(number);
             }
         }else{
             if (!two){
@@ -357,7 +384,9 @@ public class LopezMiquel_Main {
             if (!flag){
                 mainDeck.remove(number);
             }
+            flag=false;
         }while (playersList.get(x).getDeck().size()<5);
+        orderPosition();
     }
 
     /**
@@ -368,11 +397,11 @@ public class LopezMiquel_Main {
         boolean flag=false;
         do {
             int number = (int)(Math.random()*mainDeck.size());
-
             playersList.get(x).addCardToDeck(mainDeck.get(number));
             for (int i = 0; i < playersList.get(x).getDeck().size()-1; i++) {
-                if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()){
-                    playersList.get(x).getDeck().remove(i);
+                if (playersList.get(x).getDeck().get(i).getPosition()==mainDeck.get(number).getPosition()
+                || playersList.get(x).getDeck().get(i).equals(mainDeck.get(number))){
+                    playersList.get(x).getDeck().remove(playersList.get(x).getDeck().size()-1);
                     flag=true;
                     break;
                 }
@@ -380,7 +409,9 @@ public class LopezMiquel_Main {
             if (!flag){
                 mainDeck.remove(number);
             }
+            flag=false;
         }while (playersList.get(x).getDeck().size()<5);
+        orderPosition();
     }
 
     /**
@@ -438,15 +469,15 @@ public class LopezMiquel_Main {
         mainDeck.add(plKobe);
         LopezMiquel_Card plLarry = new LopezMiquel_Card("Larry", "Bird", 3,99, 99, "Boston Celtics (1984)", "PLLB");
         mainDeck.add(plLarry);
-        LopezMiquel_Card plAllen = new LopezMiquel_Card("Allen", "Iverson", 1,99, 99, "Philadelphia 76ers (2001)", "PLAI");
+        LopezMiquel_Card plAllen = new LopezMiquel_Card("Allen", "Iverson", 1,99, 85, "Philadelphia 76ers (2001)", "PLAI");
         mainDeck.add(plAllen);
         LopezMiquel_Card plShaquille = new LopezMiquel_Card("Shaquille", "O'Neal", 5,99, 99, "Los Angeles Lakers (2002)", "PLSO");
         mainDeck.add(plShaquille);
-        LopezMiquel_Card plKarl = new LopezMiquel_Card("Karl", "Malone", 5,99, 99, "Utah Jazz (1989)", "PLKM");
+        LopezMiquel_Card plKarl = new LopezMiquel_Card("Karl", "Malone", 5,90, 90, "Utah Jazz (1989)", "PLKM");
         mainDeck.add(plKarl);
-        LopezMiquel_Card plKareem = new LopezMiquel_Card("Kareem", "Abdul-Jabbar", 5,99, 99, "Los Angeles Lakers (1980)", "PLKA");
+        LopezMiquel_Card plKareem = new LopezMiquel_Card("Kareem", "Abdul-Jabbar", 5,99, 95, "Los Angeles Lakers (1980)", "PLKA");
         mainDeck.add(plKareem);
-        LopezMiquel_Card plMagic = new LopezMiquel_Card("Magic", "Johnson", 1,99, 99, "Los Angeles Lakers (1987)", "PLEJ");
+        LopezMiquel_Card plMagic = new LopezMiquel_Card("Magic", "Johnson", 1,99, 95, "Los Angeles Lakers (1987)", "PLEJ");
         mainDeck.add(plMagic);
         LopezMiquel_Card plWilt = new LopezMiquel_Card("Wilt", "Chamberlain", 5,99, 99, "Philadelphia 76ers (1961)", "PLWC");
         mainDeck.add(plWilt);
@@ -483,8 +514,8 @@ public class LopezMiquel_Main {
         mainDeck.add(bnReggie);
         LopezMiquel_Card bnDeAndre = new LopezMiquel_Card("DeAndre", "Jordan", 5,85, 85, "Brooklyn Nets", "BNDJ");
         mainDeck.add(bnDeAndre);
-        LopezMiquel_Card bnNicolas = new LopezMiquel_Card("Nicolas", "Claxton", 5,54, 49, "Brooklyn Nets", "BNNC");
-        mainDeck.add(bnNicolas);
+        LopezMiquel_Card bnLaMarcus = new LopezMiquel_Card("LaMarcus", "Aldridge", 5,85, 85, "Brooklyn Nets", "BNNC");
+        mainDeck.add(bnBlake);
         //**************************************************************************************************************************************
         //Miami Heat
         //**************************************************************************************************************************************
@@ -555,8 +586,8 @@ public class LopezMiquel_Main {
         mainDeck.add(lalHarrell);
         LopezMiquel_Card lalAnteto = new LopezMiquel_Card("Kostas", "Antetokoumpo", 5,61, 65, "Los Angeles Lakers", "LALKA");
         mainDeck.add(lalAnteto);
-        LopezMiquel_Card lalDamian = new LopezMiquel_Card("Damian", "Jones", 5,60, 65, "Los Angeles Lakers", "LALDS");
-        mainDeck.add(lalDamian);
+        LopezMiquel_Card lalAndre = new LopezMiquel_Card("Andre", "Drummond", 5,60, 65, "Los Angeles Lakers", "LALDS");
+        mainDeck.add(lalAndre);
     }
 
     /**
