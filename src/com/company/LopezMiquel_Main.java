@@ -54,16 +54,30 @@ public class LopezMiquel_Main {
      */
     public static void disponibleCards(){
         System.out.println( "******************************* CARTAS DISPONIBLES ************************************\n"+
-                            RED + "Prime Legends: " + RESET + "Jugadores legendarios en su mejor estado de forma\n"+
-                            RED + "Future Stars: " + RESET + "Jugadores que actualmente no estan en la NBA pero nadie duda que estaran\n"+
-                            RED + "Celebrity: \n" + RESET + "Jugadores que han participado en el All-Star game como celebridades\n"+
+                            RED + "Prime Legends:\n" + RESET + "     Jugadores legendarios en su mejor estado de forma.\n"+
+                            RED + "Future Stars:\n" + RESET + "     Jugadores que actualmente no estan en la NBA pero nadie duda que estaran.\n"+
+                            RED + "Celebrity:\n" + RESET + "     Jugadores que han participado en el All-Star game como celebridades.\n"+
                             RED + "Rosters NBA (2020-2021):\n" + RESET +
                             "     -Miami Heat\n" + "     -Los Angeles Lakers\n" + "     -Dallas Mavericks\n"+
                             "     -Brooklyn Nets\n"+ "     -Milwaukee Bucks\n"+ "     -Denver Nuggets\n"+
                             "     -Philadelphia 76ers\n"+
                             RED + "Rosters Euroliga (2020-2021):\n" + RESET +
                             "     -Real Madrid\n" + "     -FC Barcelona\n" +
+                            RED + "Recuento de cartas:\n" + RESET +
+                            RED + "Bases: "+ RESET + countCards(1) + RED + " Escoltas: "+ RESET + countCards(2) +
+                            RED + " Aleros: "+ RESET + countCards(3) + RED + " Ala pivots: "+ RESET + countCards(4) +
+                            RED + " Pivots: "+ RESET + countCards(5) + RED + " Total: "+ RESET + mainDeck.size()+ "\n"+
                             "******************************* CARTAS DISPONIBLES ************************************\n");
+    }
+
+    public static int countCards(int postion){
+        int x = 0;
+        for (int i = 0; i < mainDeck.size(); i++) {
+            if (mainDeck.get(i).getPosition()==postion){
+                x++;
+            }
+        }
+        return x;
     }
 
     /**
