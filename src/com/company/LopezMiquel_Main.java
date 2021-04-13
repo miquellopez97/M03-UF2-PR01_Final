@@ -56,9 +56,13 @@ public class LopezMiquel_Main {
         System.out.println( "******************************* CARTAS DISPONIBLES ************************************\n"+
                             RED + "Prime Legends: " + RESET + "Jugadores legendarios en su mejor estado de forma\n"+
                             RED + "Future Stars: " + RESET + "Jugadores que actualmente no estan en la NBA pero nadie duda que estaran\n"+
+                            RED + "Celebrity: \n" + RESET + "Jugadores que han participado en el All-Star game como celebridades\n"+
                             RED + "Rosters NBA (2020-2021):\n" + RESET +
                             "     -Miami Heat\n" + "     -Los Angeles Lakers\n" + "     -Dallas Mavericks\n"+
-                            "     -Brooklyn Nets\n"+ "     -Milwaukee Bucks\n"+
+                            "     -Brooklyn Nets\n"+ "     -Milwaukee Bucks\n"+ "     -Denver Nuggets\n"+
+                            "     -Philadelphia 76ers\n"+
+                            RED + "Rosters Euroliga (2020-2021):\n" + RESET +
+                            "     -Real Madrid\n" + "     -FC Barcelona\n" +
                             "******************************* CARTAS DISPONIBLES ************************************\n");
     }
 
@@ -569,6 +573,30 @@ public class LopezMiquel_Main {
         mainDeck.add(plRussell);
         LopezMiquel_Card plPau = new LopezMiquel_Card("Pau", "Gasol", 5,99, 95, "Los Angeles Lakers (2010)", "PLPG");
         mainDeck.add(plPau);
+        LopezMiquel_Card plKevin = new LopezMiquel_Card("Kevin", "Garnet", 5,99, 95, "Boston Celtics (2008)", "PLKG");
+        mainDeck.add(plKevin);
+        LopezMiquel_Card plRondo = new LopezMiquel_Card("Rajon", "Rondo", 1,85, 95, "Boston Celtics (2008)", "PLRR");
+        mainDeck.add(plKevin);
+        LopezMiquel_Card plPierce = new LopezMiquel_Card("Paul", "Pierce", 3,97, 90, "Boston Celtics (2008)", "PLPP");
+        mainDeck.add(plPierce);
+        LopezMiquel_Card plRay = new LopezMiquel_Card("Ray", "Allen", 2,95, 90, "Boston Celtics (2008)", "PLRA");
+        mainDeck.add(plRay);
+        LopezMiquel_Card plStephen = new LopezMiquel_Card("Stephen", "Curry", 1,99, 90, "Golden State Warriors (2019)", "PLSC");
+        mainDeck.add(plStephen);
+        LopezMiquel_Card plKlay = new LopezMiquel_Card("Klay", "Thompson", 2,95, 95, "Golden State Warriors (2019)", "PLKT");
+        mainDeck.add(plKlay);
+        LopezMiquel_Card plKevinD = new LopezMiquel_Card("Kevin", "Durant", 3,99, 95, "Golden State Warriors (2019)", "PLKD");
+        mainDeck.add(plKevinD);
+        LopezMiquel_Card plDraymond = new LopezMiquel_Card("Draymond", "Green", 5,80, 95, "Golden State Warriors (2019)", "PLDG");
+        mainDeck.add(plDraymond);
+        LopezMiquel_Card plCarmelo = new LopezMiquel_Card("Carmelo", "Anthony", 4,90, 90, "New York Knicks (2012)", "PLCA");
+        mainDeck.add(plCarmelo);
+        LopezMiquel_Card plLebronM = new LopezMiquel_Card("Lebron", "James", 3,99, 99, "Miami Heat (2013)", "PLLJM");
+        mainDeck.add(plLebronM);
+        LopezMiquel_Card plLebronC = new LopezMiquel_Card("Lebron", "James", 3,99, 95, "Cleveland Cavaliers (2009)", "PLLJC");
+        mainDeck.add(plLebronC);
+        LopezMiquel_Card plDwyane = new LopezMiquel_Card("Dwyane", "Wade", 2,95, 95, "Cleveland Cavaliers (2009)", "PLDD");
+        mainDeck.add(plDwyane);
         //**************************************************************************************************************************************
         //Future Stars
         //**************************************************************************************************************************************
@@ -582,6 +610,35 @@ public class LopezMiquel_Main {
         mainDeck.add(fsCade);
         LopezMiquel_Card fsJalen = new LopezMiquel_Card("Jalen", "Green", 1,85, 85, "NBA G League Ignite (2021)", "FSJG");
         mainDeck.add(fsJalen);
+        LopezMiquel_Card fsTristan = new LopezMiquel_Card("Tristan", "Vukcevic", 3,85, 85, "Real Madrid (2021)", "FSTV");
+        mainDeck.add(fsTristan);
+        LopezMiquel_Card fsUsman = new LopezMiquel_Card("Usman", "Garuba", 4,85, 85, "Real Madrid (2021)", "FSUG");
+        mainDeck.add(fsUsman);
+        LopezMiquel_Card fsLeandro = new LopezMiquel_Card("Leandro", "Bolmaro", 2,85, 85, "FC Barcelona (2021)", "FSLB");
+        mainDeck.add(fsUsman);
+        //**************************************************************************************************************************************
+        //Celebrity
+        //**************************************************************************************************************************************
+        LopezMiquel_Card cBad = new LopezMiquel_Card("Bad", "Bunny", 3,80, 80, "Celebrity Team", "CBB");
+        mainDeck.add(cBad);
+        LopezMiquel_Card cJustin = new LopezMiquel_Card("Justin", "Bieber", 2,80, 80, "Celebrity Team", "CJB");
+        mainDeck.add(cJustin);
+        LopezMiquel_Card cRachel = new LopezMiquel_Card("Rachel", "DeMita", 1,80, 80, "Celebrity Team", "CRD");
+        mainDeck.add(cRachel);
+        LopezMiquel_Card cKevin = new LopezMiquel_Card("Kevin", "Hart", 1,80, 80, "Celebrity Team", "CKH");
+        mainDeck.add(cKevin);
+        LopezMiquel_Card cSnoop = new LopezMiquel_Card("Snoop", "Dogg", 4,80, 80, "Celebrity Team", "CSD");
+        mainDeck.add(cSnoop);
+        LopezMiquel_Card cUsain = new LopezMiquel_Card("Usain", "Bolt", 4,80, 80, "Celebrity Team", "CUB");
+        mainDeck.add(cUsain);
+        LopezMiquel_Card cVinny = new LopezMiquel_Card("Vinny", "Guadagnino", 3,80, 80, "Celebrity Team", "CVG");
+        mainDeck.add(cVinny);
+        LopezMiquel_Card cArmando = new LopezMiquel_Card("Pitbull", " ", 4,80, 80, "Celebrity Team", "CAP");
+        mainDeck.add(cArmando);
+        LopezMiquel_Card cIce = new LopezMiquel_Card("Ice", "Cube", 5,80, 80, "Celebrity Team", "CIC");
+        mainDeck.add(cIce);
+        LopezMiquel_Card cJustinT = new LopezMiquel_Card("Justin", "Timberlake", 4,80, 80, "Celebrity Team", "CSD");
+        mainDeck.add(cJustinT);
         //**************************************************************************************************************************************
         //Brooklyn Nets
         //**************************************************************************************************************************************
@@ -615,6 +672,37 @@ public class LopezMiquel_Main {
         mainDeck.add(bnDeAndre);
         LopezMiquel_Card bnLaMarcus = new LopezMiquel_Card("LaMarcus", "Aldridge", 5,85, 85, "Brooklyn Nets", "BNNC");
         mainDeck.add(bnBlake);
+        //**************************************************************************************************************************************
+        //Philadelphia 76ers
+        //**************************************************************************************************************************************
+        LopezMiquel_Card p7Ben = new LopezMiquel_Card("Ben", "Simmons", 1,90, 85, "Philadelphia 76ers", "P7BS");
+        mainDeck.add(p7Ben);
+        LopezMiquel_Card p7George = new LopezMiquel_Card("George", "Hill", 1,70, 75, "Philadelphia 76ers", "P7GH");
+        mainDeck.add(p7George);
+        LopezMiquel_Card p7Tyrese = new LopezMiquel_Card("Tyrese", "Maxey", 1,60, 62, "Philadelphia 76ers", "P7TM");
+        mainDeck.add(p7Tyrese);
+        LopezMiquel_Card p7Isaiah = new LopezMiquel_Card("Isaiah", "Joe", 1,62, 59, "Philadelphia 76ers", "P7IJ");
+        mainDeck.add(p7Isaiah);
+        LopezMiquel_Card p7Seth = new LopezMiquel_Card("Seth", "Curry", 2,73, 70, "Philadelphia 76ers", "P7SC");
+        mainDeck.add(p7Seth);
+        LopezMiquel_Card p7Shake = new LopezMiquel_Card("Shake", "Milton", 2,65, 60, "Philadelphia 76ers", "P7SM");
+        mainDeck.add(p7Shake);
+        LopezMiquel_Card p7Danny = new LopezMiquel_Card("Danny", "Green", 3,70, 70, "Philadelphia 76ers", "P7DG");
+        mainDeck.add(p7Danny);
+        LopezMiquel_Card p7Matisse = new LopezMiquel_Card("Matisse", "Thybulle", 3,62, 54, "Philadelphia 76ers", "P7MT");
+        mainDeck.add(p7Matisse);
+        LopezMiquel_Card p7Furkan = new LopezMiquel_Card("Furkan", "Korkmaz", 3,62, 53, "Philadelphia 76ers", "P7FK");
+        mainDeck.add(p7Furkan);
+        LopezMiquel_Card p7Tobias = new LopezMiquel_Card("Tobias", "Harris", 4,85, 80, "Philadelphia 76ers", "P7TH");
+        mainDeck.add(p7Tobias);
+        LopezMiquel_Card p7Mike = new LopezMiquel_Card("Mike", "Scott", 4,70, 64, "Philadelphia 76ers", "P7MS");
+        mainDeck.add(p7Mike);
+        LopezMiquel_Card p7Anthony = new LopezMiquel_Card("Anthony", "Tolliver", 4,63, 60, "Philadelphia 76ers", "P7AT");
+        mainDeck.add(p7Anthony);
+        LopezMiquel_Card p7Joel = new LopezMiquel_Card("Joel", "Embid", 5,95, 90, "Philadelphia 76ers", "P7JE");
+        mainDeck.add(p7Joel);
+        LopezMiquel_Card p7Dwight = new LopezMiquel_Card("Dwight", "Howard", 5,75, 70, "Philadelphia 76ers", "P7DH");
+        mainDeck.add(p7Dwight);
         //**************************************************************************************************************************************
         //Miami Heat
         //**************************************************************************************************************************************
@@ -725,6 +813,35 @@ public class LopezMiquel_Main {
         LopezMiquel_Card dmBoban = new LopezMiquel_Card("Boban", "Marjanovic", 5,69, 69, "Dallas Mavericks", "DMBM");
         mainDeck.add(dmBoban);
         //**************************************************************************************************************************************
+        //Denver Nuggets
+        //**************************************************************************************************************************************
+        LopezMiquel_Card dnJamal = new LopezMiquel_Card("Jamal", "Murray", 1,90, 85, "Denver Nuggets", "DNJM");
+        mainDeck.add(dnJamal);
+        LopezMiquel_Card dnFacundo = new LopezMiquel_Card("Facundo", "Campazzo", 1,70, 70, "Denver Nuggets", "DNFC");
+        mainDeck.add(dnFacundo);
+        LopezMiquel_Card dnWill = new LopezMiquel_Card("Will", "Barton", 2,70, 71, "Denver Nuggets", "DNWB");
+        mainDeck.add(dnWill);
+        LopezMiquel_Card dnMonte = new LopezMiquel_Card("Monte", "Morris", 2,70, 70, "Denver Nuggets", "DNMM");
+        mainDeck.add(dnMonte);
+        LopezMiquel_Card dnMichael = new LopezMiquel_Card("Michael", "Porter Jr.", 3,85, 85, "Denver Nuggets", "DNMP");
+        mainDeck.add(dnMichael);
+        LopezMiquel_Card dnPJ = new LopezMiquel_Card("P.J.", "Dozier", 3,71, 65, "Denver Nuggets", "DNPJ");
+        mainDeck.add(dnPJ);
+        LopezMiquel_Card dnVlatko = new LopezMiquel_Card("Vlatko", "Cancar", 3,65, 66, "Denver Nuggets", "DNVC");
+        mainDeck.add(dnVlatko);
+        LopezMiquel_Card dnAaron = new LopezMiquel_Card("Aaron", "Gordon", 4,90, 85, "Denver Nuggets", "DNAG");
+        mainDeck.add(dnAaron);
+        LopezMiquel_Card dnPaul = new LopezMiquel_Card("Paul", "Millsap", 4,75, 75, "Denver Nuggets", "DNPM");
+        mainDeck.add(dnPaul);
+        LopezMiquel_Card dnJaMychal = new LopezMiquel_Card("JaMichal", "Green", 4,65, 66, "Denver Nuggets", "DNJG");
+        mainDeck.add(dnJaMychal);
+        LopezMiquel_Card dnNikola = new LopezMiquel_Card("Nikola", "Jokic", 5,90, 90, "Denver Nuggets", "DNNJ");
+        mainDeck.add(dnNikola);
+        LopezMiquel_Card dnJaVale = new LopezMiquel_Card("JaVale", "McGee", 5,70, 75, "Denver Nuggets", "DNJV");
+        mainDeck.add(dnJaVale);
+        LopezMiquel_Card dnBol = new LopezMiquel_Card("Bol", "Bol", 5,80, 70, "Denver Nuggets", "DNBB");
+        mainDeck.add(dnBol);
+        //**************************************************************************************************************************************
         //Milwaukee Bucks
         //**************************************************************************************************************************************
         LopezMiquel_Card mbJrue = new LopezMiquel_Card("Jrue", "Holiday", 1,80, 72, "Milwaukee Bucks", "MBJH");
@@ -755,6 +872,68 @@ public class LopezMiquel_Main {
         mainDeck.add(mbBrook);
         LopezMiquel_Card mbBobby = new LopezMiquel_Card("Bobby", "Portis", 5,76, 72, "Milwaukee Bucks", "MBBP");
         mainDeck.add(mbBobby);
+        //**************************************************************************************************************************************
+        //Real Madrid
+        //**************************************************************************************************************************************
+        LopezMiquel_Card rmNicolas = new LopezMiquel_Card("Nicolas", "Laprovittola", 1,72, 70, "Real Madrid", "RMNL");
+        mainDeck.add(rmNicolas);
+        LopezMiquel_Card rmCarlos = new LopezMiquel_Card("Carlos", "Alocen", 1,65, 68, "Real Madrid", "RMCA");
+        mainDeck.add(rmCarlos);
+        LopezMiquel_Card rmSergio = new LopezMiquel_Card("Sergio", "Llull", 2,75, 70, "Real Madrid", "RMSL");
+        mainDeck.add(rmSergio);
+        LopezMiquel_Card rmJaycee = new LopezMiquel_Card("Jaycee", "Carroll", 2,75, 60, "Real Madrid", "RMJC");
+        mainDeck.add(rmJaycee);
+        LopezMiquel_Card rmFabien = new LopezMiquel_Card("Fabien", "Causer", 3,67, 67, "Real Madrid", "RMFC");
+        mainDeck.add(rmFabien);
+        LopezMiquel_Card rmRudy = new LopezMiquel_Card("Rodolfo (Rudy)", "Fernandez", 3,77, 70, "Real Madrid", "RMRF");
+        mainDeck.add(rmRudy);
+        LopezMiquel_Card rmAlberto = new LopezMiquel_Card("Alberto", "Abalde", 3,65, 69, "Real Madrid", "RMAA");
+        mainDeck.add(rmAlberto);
+        LopezMiquel_Card rmTaylor = new LopezMiquel_Card("Jeffery", "Taylor", 3,70, 68, "Real Madrid", "RMJT");
+        mainDeck.add(rmTaylor);
+        LopezMiquel_Card rmAnthony = new LopezMiquel_Card("Anthony", "Randolph", 4,75, 75, "Real Madrid", "RMAR");
+        mainDeck.add(rmAnthony);
+        LopezMiquel_Card rmFelipe = new LopezMiquel_Card("Felipe", "Reyes", 4,65, 65, "Real Madrid", "RMFR");
+        mainDeck.add(rmFelipe);
+        LopezMiquel_Card rmTrey = new LopezMiquel_Card("Trey", "Thompkins", 4,75, 70, "Real Madrid", "RMTT");
+        mainDeck.add(rmTrey);
+        LopezMiquel_Card rmAlex = new LopezMiquel_Card("Alex", "Tyus", 5,68, 67, "Real Madrid", "RMAT");
+        mainDeck.add(rmAlex);
+        LopezMiquel_Card rmUsman = new LopezMiquel_Card("Usman", "Garuba", 5,77, 75, "Real Madrid", "RMUG");
+        mainDeck.add(rmUsman);
+        LopezMiquel_Card rmVincent = new LopezMiquel_Card("Vincent", "Poirier", 5,70, 70, "Real Madrid", "RMVP");
+        mainDeck.add(rmVincent);
+        LopezMiquel_Card rmWalter = new LopezMiquel_Card("Walter", "Tavares", 5,73, 74, "Real Madrid", "RMWT");
+        mainDeck.add(rmWalter);
+        //**************************************************************************************************************************************
+        //FC Barcelona
+        //**************************************************************************************************************************************
+        LopezMiquel_Card fbLeo = new LopezMiquel_Card("Leo", "Westermann", 1,65, 67, "FC Barcelona", "FBLW");
+        mainDeck.add(fbLeo);
+        LopezMiquel_Card fbNick = new LopezMiquel_Card("Nick", "Calathes", 1,68, 65, "FC Barcelona", "FBNK");
+        mainDeck.add(fbNick);
+        LopezMiquel_Card fbAlex = new LopezMiquel_Card("Alex", "Abrines", 2,70, 70, "FC Barcelona", "FBAA");
+        mainDeck.add(fbAlex);
+        LopezMiquel_Card fbKyle = new LopezMiquel_Card("Kyle", "Kuric", 2,67, 68, "FC Barcelona", "FBKK");
+        mainDeck.add(fbKyle);
+        LopezMiquel_Card fbAdam = new LopezMiquel_Card("Adam", "Hanga", 3,67, 68, "FC Barcelona", "FBAH");
+        mainDeck.add(fbAdam);
+        LopezMiquel_Card fbCory = new LopezMiquel_Card("Cory", "Higgins", 3,69, 65, "FC Barcelona", "FBCH");
+        mainDeck.add(fbCory);
+        LopezMiquel_Card fbVictor = new LopezMiquel_Card("Victor", "Claver", 3,62, 63, "FC Barcelona", "FBVC");
+        mainDeck.add(fbVictor);
+        LopezMiquel_Card fbRolands = new LopezMiquel_Card("Rolands", "Kuric", 4,61, 60, "FC Barcelona", "FBRS");
+        mainDeck.add(fbRolands);
+        LopezMiquel_Card fbPierre = new LopezMiquel_Card("Pierre", "Oriola", 4,70, 65, "FC Barcelona", "FBPO");
+        mainDeck.add(fbPierre);
+        LopezMiquel_Card fbRata = new LopezMiquel_Card("Nikola", "Mirotic", 4,75, 70, "FC Barcelona", "FBNM");
+        mainDeck.add(fbRata);
+        LopezMiquel_Card fbBrandon = new LopezMiquel_Card("Brondon", "Davies", 5,69, 65, "FC Barcelona", "FBBD");
+        mainDeck.add(fbBrandon);
+        LopezMiquel_Card fbArtem = new LopezMiquel_Card("Artem", "Pustovyi", 5,60, 58, "FC Barcelona", "FBAP");
+        mainDeck.add(fbArtem);
+        LopezMiquel_Card fbPau = new LopezMiquel_Card("Pau", "Gasol", 5,65, 55, "FC Barcelona", "FBPG");
+        mainDeck.add(fbPau);
     }
 
     /**
