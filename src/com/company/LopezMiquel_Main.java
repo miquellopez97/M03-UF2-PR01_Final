@@ -14,6 +14,10 @@ public class LopezMiquel_Main {
     static ArrayList<LopezMiquel_Card> playerFloor = new ArrayList<>();
     static int scoreboard [] = new int[2];
 
+    /**
+     * Funcion que hace el programa ejecutable
+     * @param args x
+     */
     public static void main(String[] args) {
         int option;
 
@@ -70,6 +74,11 @@ public class LopezMiquel_Main {
                             "******************************* CARTAS DISPONIBLES ************************************\n");
     }
 
+    /**
+     * Cuenta el numero de cartas dependiendo de su posicion
+     * @param postion Posicion del jugador
+     * @return Numero de cartas de la misma posicion
+     */
     public static int countCards(int postion){
         int x = 0;
         for (int i = 0; i < mainDeck.size(); i++) {
@@ -218,7 +227,6 @@ public class LopezMiquel_Main {
 
     /**
      * Se produce una ronda del juego (oneVsOneDEF(), oneVsOneATK(), twoVsTwo() y oneVsOneDEF())
-     * @return int, 1 o 0 dependiendo si ha ganado
      */
     public static void quarter(int x){
 
@@ -267,7 +275,6 @@ public class LopezMiquel_Main {
     /**
      * Compara el atributo def de la carta del usuario vs el atributo atk del bot
      * Asigna valor al marcador
-     * @return Si el jugador ha ganado o ha perdido
      */
     public static void oneVsOneDEF(){
         System.out.println("Esta ronda defiendes");
@@ -290,7 +297,6 @@ public class LopezMiquel_Main {
     /**
      * Compara el atributo atk de la carta del usuario vs el atributo def del bot
      * Asigna valor al marcador
-     * @return Si el jugador ha ganado o ha perdido
      */
     public static void oneVsOneATK(){
         System.out.println("Esta ronda atacas");
@@ -313,7 +319,6 @@ public class LopezMiquel_Main {
     /**
      * Compara el atributo ovr de la carta del usuario vs el atributo ovr del bot
      * Asigna valor al marcador
-     * @return Si el jugador ha ganado o ha perdido
      */
     public static void twoVsTwo(){
         System.out.println("Ronda especial 2 vs 2");
@@ -637,9 +642,9 @@ public class LopezMiquel_Main {
         mainDeck.add(cBad);
         LopezMiquel_Card cJustin = new LopezMiquel_Card("Justin", "Bieber", 2,80, 80, "Celebrity Team", "CJB");
         mainDeck.add(cJustin);
-        LopezMiquel_Card cRachel = new LopezMiquel_Card("Rachel", "DeMita", 1,80, 80, "Celebrity Team", "CRD");
+        LopezMiquel_Card cRachel = new LopezMiquel_Card("Rachel", "DeMita", 2,80, 80, "Celebrity Team", "CRD");
         mainDeck.add(cRachel);
-        LopezMiquel_Card cKevin = new LopezMiquel_Card("Kevin", "Hart", 1,80, 80, "Celebrity Team", "CKH");
+        LopezMiquel_Card cKevin = new LopezMiquel_Card("Kevin", "Hart", 2,80, 80, "Celebrity Team", "CKH");
         mainDeck.add(cKevin);
         LopezMiquel_Card cSnoop = new LopezMiquel_Card("Snoop", "Dogg", 4,80, 80, "Celebrity Team", "CSD");
         mainDeck.add(cSnoop);
